@@ -16,4 +16,12 @@ interface TodoType {
   completed: boolean;
 }
 
-export type { UserType, PostType, TodoType };
+interface WeatherType {
+  city: string;
+  description: string;
+  temperature: number;
+  humidity: number;
+  iconLink: string;
+}
+
+export type { UserType, PostType, TodoType, WeatherType };

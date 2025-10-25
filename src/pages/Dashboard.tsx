@@ -1,6 +1,7 @@
 import AnalyticsCard from "../components/cards/AnalyticsCard";
 import NotesManagerCard from "../components/cards/NotesManagerCard";
 import UsersCard from "../components/cards/UsersCard";
+import WeatherCard from "../components/cards/WeatherCard";
 
 function Dashboard() {
   return (
@@ -19,12 +20,7 @@ function Dashboard() {
         </div>
 
         <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow text-center">
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">
-            Weather Card
-          </h2>
-          <p className="text-gray-500 text-sm">
-            Check today's weather forecast
-          </p>
+          <WeatherCard />
         </div>
       </div>
     </div>

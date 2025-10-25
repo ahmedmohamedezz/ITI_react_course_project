@@ -67,20 +67,20 @@ function UserDetails() {
 
       <div className="flex items-center justify-center p-6">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl">
-          <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow text-center">
+          <div className="bg-amber-50 rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow text-center">
             <h2 className="text-xl font-semibold text-gray-800 mb-2">Posts</h2>
             {postLoading ? <p>Loading posts...</p> : <p></p>}
             {postErr ? <p>{postErr.message}</p> : <p></p>}
             {!postLoading &&
               posts.map((post) => (
-                <div key={post.id} className="border p-2 rounded mb-2">
+                <div key={post.id} className="border p-2 rounded mb-2 bg-white">
                   <h3 className="font-bold">{post.title}</h3>
                   <p>{post.body}</p>
                 </div>
               ))}
           </div>
 
-          <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow text-center">
+          <div className="bg-green-50 rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow text-center">
             <h2 className="text-xl font-semibold text-gray-800 mb-2">Todos</h2>
             {todoLoading ? <p>Loading posts...</p> : <p></p>}
             {todoErr ? <p>{todoErr.message}</p> : <p></p>}
@@ -90,8 +90,8 @@ function UserDetails() {
                   key={todo.id}
                   className={
                     todo.completed
-                      ? "border-2 border-green-600 bg-green-100 text-green-600 p-2 rounded mb-2 line-through"
-                      : "border p-2 rounded mb-2"
+                      ? "border-2 border-green-600 bg-white text-green-600 p-2 rounded mb-2 line-through"
+                      : "border p-2 rounded mb-2 bg-white"
                   }
                 >
                   <h3
