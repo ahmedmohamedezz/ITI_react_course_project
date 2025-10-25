@@ -3,14 +3,15 @@ import { useAuthContext } from "../context/AuthContext";
 import type { JSX } from "react";
 
 function ProtectedRoute({ children }: { children: JSX.Element }) {
-  // we can use ReactNode instead of JSX.Element but
-  // JSX.Element is more strict
-  const { isLoggedIn } = useAuthContext();
+  const { isLoggedIn, isAuthReady } = useAuthContext();
+
+  // Wait until we know the auth status
+  if (!isAuthReady) return null; // or a loading spinner
 
   if (!isLoggedIn) {
     return <Navigate to="/login" replace />;
   }
-  console.log(children.type.name);
+
   return children;
 }
 

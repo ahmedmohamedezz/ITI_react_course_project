@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 // what the context will expose
 interface AuthContextType {
   isLoggedIn: boolean;
+  isAuthReady: boolean;
   login: () => void;
   logout: () => void;
 }
@@ -10,9 +11,8 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return !!localStorage.getItem("user");
-  });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAuthReady, setIsAuthReady] = useState(false);
 
   // when the component renders
   useEffect(() => {
@@ -21,6 +21,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (loginStatusInStorage && loginStatusInStorage === "true") {
       setIsLoggedIn(true);
     }
+
+    // at this point, we checked the local storage
+    // we need a way to tell the protected routes whether we checked for
+    // authentication or not
+    setIsAuthReady(true);
   }, []);
 
   // persist login status in localStorage
@@ -35,7 +40,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, isAuthReady, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
