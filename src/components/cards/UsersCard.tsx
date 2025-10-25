@@ -1,10 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-
-async function fetchUsers() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  return res.json();
-}
+import { fetchUsers } from "../../apis/apis";
 
 interface UserType {
   id: number;

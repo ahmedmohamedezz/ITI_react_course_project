@@ -38,10 +38,10 @@ function App() {
         }
       />
       {/* any other route, should navigate to either login or dashboard */}
-      {/* <Route
+      <Route
         path="*"
         element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} replace />}
-      /> */}
+      />
     </Routes>
   );
 }

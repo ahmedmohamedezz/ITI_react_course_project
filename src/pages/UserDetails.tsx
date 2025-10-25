@@ -1,45 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-
-interface UserType {
-  id: number;
-  name: string;
-  email: string;
-}
-
-interface PostType {
-  id: number;
-  title: string;
-  body: string;
-}
-
-interface TodoType {
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
-async function fetchUser(userId: string | undefined): Promise<UserType> {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${userId}`
-  );
-  return res.json();
-}
-
-async function fetchUserPosts(userId: string | undefined): Promise<PostType[]> {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
-  );
-  return res.json();
-}
-
-async function fetchUserTodos(userId: string | undefined): Promise<TodoType[]> {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/todos?userId=${userId}`
-  );
-  return res.json();
-}
+import { fetchUser, fetchUserPosts, fetchUserTodos } from "../apis/apis";
+import type { UserType, TodoType, PostType } from "../types/types";
 
 function UserDetails() {
   const { id } = useParams();
